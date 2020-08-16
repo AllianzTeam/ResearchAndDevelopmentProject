@@ -11,7 +11,7 @@ import com.groupchallenge.co2tracker.model.Customer;
 import com.groupchallenge.co2tracker.service.CustomerService;
 
 @RestController  
-public class TrackerController {
+public class CustomerController {
 	
 	@Autowired  
 	CustomerService customerService;  
