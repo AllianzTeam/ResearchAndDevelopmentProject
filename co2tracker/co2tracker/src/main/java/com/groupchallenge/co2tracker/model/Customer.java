@@ -32,8 +32,8 @@ public class Customer {
 	public String getStreet() {
 		return street;
 	}
-	
-	@OneToOne(cascade = CascadeType.ALL)
+
+	@OneToOne
 	@JoinColumn(name="CITY_ID")
 	private City city;
 

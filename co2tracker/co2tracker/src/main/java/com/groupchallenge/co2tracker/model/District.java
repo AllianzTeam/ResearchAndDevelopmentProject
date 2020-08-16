@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table
@@ -18,6 +22,12 @@ public class District {
 	private String name;
 	@Column
 	private Integer zip;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "CITY_ID", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private City city;
+
 
 	public Integer getId() {
 		return id;
@@ -43,6 +53,11 @@ public class District {
 		this.zip = zip;
 	}
 
+	public City getCity() {
+		return city;
+	}
 
-
+	public void setCity(City city) {
+		this.city = city;
+	}
 }
