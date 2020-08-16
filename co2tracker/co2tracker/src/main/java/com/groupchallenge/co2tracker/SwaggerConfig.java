@@ -1,5 +1,7 @@
 package com.groupchallenge.co2tracker;
 
+import com.groupchallenge.co2tracker.controller.CityController;
+import com.groupchallenge.co2tracker.controller.CustomerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -12,29 +14,38 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import org.springframework.context.annotation.ComponentScan;
 
 @Configuration
 @EnableSwagger2
+@ComponentScan(basePackageClasses = {
+		CityController.class, CustomerController.class})
 public class SwaggerConfig {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SwaggerConfig.class);
 
-	@Bean
-	public Docket restAPI() {
-		LOGGER.debug("initializing Swagger Docket...");
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.groupchallenge.co2tracker"))
-				.paths(PathSelectors.ant("/customer")).build().apiInfo(apiInfo());
-	}
-
-	/**
-	 * API Info as it appears on the swagger-ui page
-	 */
+private static final String SWAGGER_API_VERSION = "1.0";
+	private static final String LICENSE_TEXT = "License";
+	private static final String title = "CO2 Tracker REST API";
+	private static final String description = "apis for CO2 tracker";
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("CO2 Tracker").description("To track CO2 levels")
-				.termsOfServiceUrl("http://www.chick-fil-a.com/Legal").licenseUrl("http://www.chick-fil-a.com/Legal")
-				.version("1.0").build();
+		return new ApiInfoBuilder()
+				.title(title)
+				.description(description)
+				.license(LICENSE_TEXT)
+				.version(SWAGGER_API_VERSION)
+				.build();
+	}
+
+	@Bean
+	public Docket frameworkApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.apiInfo(apiInfo())
+				.pathMapping("/")
+				.select()
+				.paths(PathSelectors.regex("/api.*"))
+				.build();
 	}
 }
 
