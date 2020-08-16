@@ -1,12 +1,10 @@
 package com.groupchallenge.co2tracker.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import java.util.Date;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 @Entity
 @Table
@@ -17,10 +15,12 @@ public class CO2Data {
 	private Integer id;
 
 	@Column
-	private String value;
+	private Integer value;
 
-	@Column
-	private Integer sensorId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "SENSOR_ID", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Sensor sensor;
 
 	@Column
 	private Date time;
@@ -33,20 +33,12 @@ public class CO2Data {
 		this.id = id;
 	}
 
-	public String getValue() {
+	public Integer getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(Integer value) {
 		this.value = value;
-	}
-
-	public Integer getSensorId() {
-		return sensorId;
-	}
-
-	public void setSensorId(Integer sensorId) {
-		this.sensorId = sensorId;
 	}
 
 	public Date getTime() {
@@ -55,5 +47,13 @@ public class CO2Data {
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+
+	public Sensor getSensor() {
+		return sensor;
+	}
+
+	public void setSensor(Sensor sensor) {
+		this.sensor = sensor;
 	}
 }

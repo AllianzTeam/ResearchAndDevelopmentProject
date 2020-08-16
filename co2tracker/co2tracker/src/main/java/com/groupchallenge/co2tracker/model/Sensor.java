@@ -1,11 +1,9 @@
 package com.groupchallenge.co2tracker.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -19,8 +17,10 @@ public class Sensor {
 	@Column
 	private String registrationDetails;
 
-	@Column
-	private Integer districtId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "DISTRICT_ID", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private District district;
 
 	public String getRegistrationDetails() {
 		return registrationDetails;
@@ -37,12 +37,11 @@ public class Sensor {
 		this.id = id;
 	}
 
-	public Integer getDistrictId() {
-		return districtId;
+	public District getDistrict() {
+		return district;
 	}
 
-	public void setDistrictId(Integer districtId) {
-		this.districtId = districtId;
+	public void setDistrict(District district) {
+		this.district = district;
 	}
-
 }
