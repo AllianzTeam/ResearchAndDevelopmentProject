@@ -2,6 +2,7 @@ package com.groupchallenge.co2tracker;
 
 import com.groupchallenge.co2tracker.controller.CityController;
 import com.groupchallenge.co2tracker.controller.CustomerController;
+import com.groupchallenge.co2tracker.controller.DistrictController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
 @Configuration
 @EnableSwagger2
 @ComponentScan(basePackageClasses = {
-		CityController.class, CustomerController.class})
+		CityController.class, CustomerController.class, DistrictController.class })
 public class SwaggerConfig {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SwaggerConfig.class);

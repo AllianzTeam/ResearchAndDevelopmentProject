@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 
 @Entity
 @Table
-public class C02Data {
+public class CO2Data {
 	@Id
 	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO)

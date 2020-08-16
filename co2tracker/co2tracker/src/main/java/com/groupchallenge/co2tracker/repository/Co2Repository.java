@@ -1,5 +1,8 @@
 package com.groupchallenge.co2tracker.repository;
 
-public interface Co2Repository {
+import com.groupchallenge.co2tracker.model.CO2Data;
+import org.springframework.data.repository.CrudRepository;
+
+public interface Co2Repository extends CrudRepository<CO2Data, Integer> {
 
 }
