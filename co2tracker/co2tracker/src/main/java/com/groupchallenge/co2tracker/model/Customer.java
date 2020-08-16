@@ -1,8 +1,11 @@
 package com.groupchallenge.co2tracker.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,13 +27,15 @@ public class Customer {
 	@Column
 	private Integer phone;
 	@Column
-	private Integer cityId;
-	@Column
 	private String emailId;
 
 	public String getStreet() {
 		return street;
 	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="CITY_ID")
+	private City city;
 
 	public void setStreet(String street) {
 		this.street = street;
@@ -60,12 +65,12 @@ public class Customer {
 		this.id = id;
 	}
 
-	public Integer getCityId() {
-		return cityId;
+	public City getCity() {
+		return city;
 	}
 
-	public void setCityId(Integer cityId) {
-		this.cityId = cityId;
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	public String getName() {
