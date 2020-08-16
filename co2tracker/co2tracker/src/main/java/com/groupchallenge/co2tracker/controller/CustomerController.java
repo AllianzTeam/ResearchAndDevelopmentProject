@@ -21,6 +21,7 @@ public class CustomerController {
 	@PostMapping("/")
 	private int saveCustomer(@RequestBody Customer customer)   
 	{  
+		System.out.println("Inside CustomerSave");
 		customerService.saveOrUpdate(customer);  
 		return customer.getId();  
 	}  

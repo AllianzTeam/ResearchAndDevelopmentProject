@@ -18,7 +18,7 @@ public class City {
 	private String name;
 	@Column
 	private String cityCode;
-	@Column
+	
 	public int getId() {
 		return Id;
 	}

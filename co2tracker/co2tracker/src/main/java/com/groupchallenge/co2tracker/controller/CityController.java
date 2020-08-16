@@ -28,6 +28,7 @@ public class CityController {
 	@PostMapping("/")
 	private int saveCity(@RequestBody City city)
 	{
+		System.out.println("Inside CitySave");
 		cityService.saveOrUpdate(city);
 		return city.getId();
 	}
