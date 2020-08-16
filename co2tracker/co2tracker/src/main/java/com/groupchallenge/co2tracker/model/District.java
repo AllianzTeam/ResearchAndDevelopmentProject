@@ -7,35 +7,42 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-@Entity  
-@Table(name ="city")
-public class City {
+@Entity
+@Table
+public class District {
 	@Id
 	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int Id;
+	private Integer id;
 	@Column
 	private String name;
 	@Column
-	private String cityCode;
-	@Column
-	public int getId() {
-		return Id;
+	private Integer zip;
+
+	public Integer getId() {
+		return id;
 	}
-	public void setId(int id) {
-		Id = id;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCityCode() {
-		return cityCode;
+
+	public Integer getZip() {
+		return zip;
 	}
-	public void setCityCode(String cityCode) {
-		this.cityCode = cityCode;
+
+	public void setZip(Integer zip) {
+		this.zip = zip;
 	}
+
+
 
 }

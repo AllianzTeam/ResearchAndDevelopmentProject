@@ -16,13 +16,13 @@ public class TrackerController {
 	@Autowired  
 	CustomerService customerService;  
 	
-	@GetMapping("/tracker/{id}")  
+	@GetMapping("/customer/{id}")
 	private Customer getStudent(@PathVariable("id") int id)   
 	{  
 		return customerService.getCustomerById(id);  
 	}  
 	
-	@PostMapping("/tracker")  
+	@PostMapping("/customer")
 	private int saveCustomer(@RequestBody Customer customer)   
 	{  
 		customerService.saveOrUpdate(customer);  

@@ -4,7 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity  
 @Table
@@ -12,7 +13,7 @@ public class Customer {
 	
 	@Id
 	@Column
-	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	@Column
 	private String name;
@@ -22,6 +23,10 @@ public class Customer {
 	private Integer zip;
 	@Column
 	private Integer phone;
+	@Column
+	private Integer cityId;
+	@Column
+	private String emailId;
 
 	public String getStreet() {
 		return street;
@@ -55,6 +60,14 @@ public class Customer {
 		this.id = id;
 	}
 
+	public Integer getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(Integer cityId) {
+		this.cityId = cityId;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -63,4 +76,11 @@ public class Customer {
 		this.name = name;
 	}
 
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
 }
