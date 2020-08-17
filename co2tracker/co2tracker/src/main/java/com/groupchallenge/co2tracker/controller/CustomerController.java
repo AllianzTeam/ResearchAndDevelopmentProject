@@ -24,10 +24,10 @@ public class CustomerController {
 		return customerService.getCustomerById(id);  
 	}  
 	
+	/*Method to post customer details*/
 	@PostMapping("/")
 	private int saveCustomer(@RequestBody Customer customer)   
 	{  
-		System.out.println("Inside CustomerSave");
 		customerService.saveOrUpdate(customer);  
 		return customer.getId();  
 	}

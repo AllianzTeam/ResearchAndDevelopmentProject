@@ -21,6 +21,7 @@ public class SensorController {
 		return sensorService.getSensorById(id);
 	}
 
+	/*Method to post Sensor details*/
 	@PostMapping("/")
 	private int saveSensor(@RequestBody Sensor sensor)
 	{

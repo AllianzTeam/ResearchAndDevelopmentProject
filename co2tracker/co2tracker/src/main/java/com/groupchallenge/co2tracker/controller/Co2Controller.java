@@ -54,6 +54,9 @@ public class Co2Controller {
 		return  (List)co2Repository.findAll();
 	}
 	
+	/*This method is calculate average value of CO2 reading from multiple sensor
+	 * Expected input - City ID and date
+	 * Expected Output Average CO2 vlaue*/
 	@GetMapping("/co2AggregateValues/{id}")
 	public double getAggregateCo2Values(@PathVariable("id") int i, @RequestParam("date")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate  date ) {
 		List<Sensor> allSensorValues = sensorService.getAllSensorValues();

@@ -23,7 +23,8 @@ public class DistrictController {
 	{
 		return districtService.getDistrictById(id);
 	}
-
+	
+	/*Method to post District details*/
 	@PostMapping("/")
 	private int saveDistrict(@RequestBody District district)
 	{

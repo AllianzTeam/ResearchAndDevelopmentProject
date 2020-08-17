@@ -31,6 +31,7 @@ public class CityController {
 		return cityService.getCityById(id);
 	}
 
+	/*Method to post City details*/
 	@PostMapping("/")
 	private int saveCity(@RequestBody City city)
 	{
